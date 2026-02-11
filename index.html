@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprende con Jabones y Velas Artesanales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-verde: #a7f3d0;
+            --color-celeste: #bae6fd;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #a7f3d0, #bae6fd, #86efac, #7dd3fc);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem 1rem;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+            background: #fff;
+        }
+
+        .link-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid transparent;
+        }
+
+        .link-item:hover {
+            transform: translateY(-3px);
+            background: #ffffff;
+            border-color: #34d399;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .social-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .badge {
+            background: linear-gradient(90deg, #10b981, #0ea5e9);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-md w-full glass-card p-8 flex flex-col items-center">
+        <!-- Encabezado -->
+        <div class="flex flex-col items-center mb-8">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1605264964528-06403738d6dc?q=80&w=256&h=256&fit=crop" alt="Logo Artesanal" class="profile-img mb-4">
+                <div class="absolute bottom-4 right-0 bg-green-500 w-5 h-5 rounded-full border-2 border-white"></div>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 text-center leading-tight">
+                Emprende con Jabones y Velas Artesanales
+            </h1>
+            <p class="text-gray-600 text-center mt-2 font-medium">
+                Fragancias que inspiran, bienestar que se siente. ✨
+            </p>
+        </div>
+
+        <!-- Redes Sociales Principales -->
+        <div class="flex space-x-6 mb-10">
+            <a href="#" class="social-icon text-pink-600 text-2xl"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon text-blue-600 text-2xl"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon text-black text-2xl"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon text-green-500 text-2xl"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <!-- Enlaces de Contenido -->
+        <div class="w-full space-y-4">
+            
+            <a href="https://go.hotmart.com/P104389006H" 
+   class="link-item flex items-center p-4 rounded-2xl w-full group">
+    <div class="bg-purple-100 p-3 rounded-xl mr-4 group-hover:bg-purple-200">
+        <i class="fas fa-graduation-cap text-purple-600"></i>
+    </div>
+    <div class="flex-1">
+        <span class="font-bold text-gray-700">Taller Online</span>
+        <p class="text-xs text-gray-500">Aprende a crear tus propios jabones</p>
+    </div>
+    <i class="fas fa-chevron-right text-gray-300 ml-2"></i>
+</a>
+
+<!-- BOTÓN BONOS -->
+<div class="w-full">
+    <button onclick="toggleBonos()" 
+        class="w-full flex items-center p-4 rounded-2xl group transition-all bg-white duration-300">
+
+        <div class="bg-sky-100 p-3 rounded-xl mr-4 group-hover:bg-sky-200 transition">
+            <i class="fas fa-gift text-sky-600"></i>
+        </div>
+
+        <div class="flex-1 text-left">
+            <span class="font-bold text-gray-700">Bonos Exclusivos</span>
+            <p class="text-xs text-gray-500">Descubre todo lo que recibes</p>
+        </div>
+
+        <i id="iconChevron" class="fas fa-chevron-down text-gray-400 ml-2 transition-transform duration-300"></i>
+    </button>
+
+    <!-- CONTENIDO DESLIZABLE -->
+    <div id="bonosContent"
+        class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white rounded-2xl shadow-md mt-2">
+
+        <div class="p-6 space-y-4 text-gray-600">
+
+            <h2 class="text-xl font-bold text-gray-800">
+                🎁 Bonos Exclusivos - Emprende creativo
+            </h2>
+
+            <div>
+                <h3 class="font-bold">1. Grupo Privado de Apoyo</h3>
+                <p>Acceso exclusivo a una comunidad privada para resolver dudas y compartir avances.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold">2. Certificado de Finalización</h3>
+                <p>Diploma digital personalizado que reconoce el logro del niño.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold">3. Guía de Materiales Reciclables</h3>
+                <p>Listado de materiales fáciles de conseguir para fomentar la creatividad ecológica.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold">4. Actualizaciones de por Vida</h3>
+                <p>Acceso permanente a nuevos proyectos y manualidades añadidas al curso.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold">5. Guía de Psicomotricidad Fina</h3>
+                <p>Material complementario que explica el desarrollo motor detrás de cada actividad.</p>
+            </div>
+
+            <p class="font-semibold text-green-600">
+                ✅ Todos estos bonos están incluidos GRATIS con la oferta actual.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+function toggleBonos() {
+    const content = document.getElementById("bonosContent");
+    const icon = document.getElementById("iconChevron");
+
+    if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+        content.style.maxHeight = "0px";
+        icon.style.transform = "rotate(0deg)";
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.style.transform = "rotate(180deg)";
+    }
+}
+</script>
+
+
+
+
+
+           <a href="opiniones.html" 
+   class="link-item flex items-center p-4 rounded-2xl w-full group">
+
+    <div class="bg-amber-100 p-3 rounded-xl mr-4 group-hover:bg-amber-200">
+        <i class="fas fa-star text-amber-600"></i>
+    </div>
+
+    <div class="flex-1">
+        <span class="font-bold text-gray-700">Opiniones del Taller</span>
+        <p class="text-xs text-gray-500">Lo que dicen de nuestra calidad</p>
+    </div>
+
+    <i class="fas fa-chevron-right text-gray-300 ml-2"></i>
+</a>
+
+<!-- Sección de Contacto Directo -->
+<div class="mt-10 w-full text-center">
+    
+    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">
+        Contáctanos
+    </h3>
+
+    <a href="https://wa.link/pksgip" 
+       target="_blank"
+       class="inline-flex items-center justify-center w-full max-w-md bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-6 rounded-xl transition-colors text-lg shadow-md">
+
+        <i class="fab fa-whatsapp mr-3 text-xl"></i> 
+        Hablar por WhatsApp
+
+    </a>
+
+</div>
+
+
+        <!-- Footer -->
+        <footer class="mt-12 text-center">
+            <p class="text-xs text-gray-400">© 2024 Jabones y Velas Artesanales</p>
+            <p class="text-[10px] text-gray-400 mt-1 italic">Hecho a mano con amor</p>
+        </footer>
+    </div>
+
+</body>
+</html>
